@@ -3,39 +3,48 @@
 **Objective**  
 I have been recording my snare practice sessions for the past 6 months.  I am attempting to do statistical analysis of the digital signals of the recordings looking at attributes such as amplitude pitch, phase, and tempo.  The goal is to be able to identify improvements using statistical tools like "R".  This is a great presentation for students.
 
-**Prerequisites**  
-Python 2.7.10,
-pip 9.0.1,
-Aubio 0.4.6,
-git version 2.11.0 (Apple Git-81)
+**Prerequisites** 
+ 
+* Python 2.7.10
+* pip 9.0.1
+* Aubio 0.4.6
+* git version 2.11.0 (for Apple Git-81)
+* RStudio 1.1.423
+
 
 #### Installation Prep
 
 Install Aubio:  
-`sudo easy_install pip` 
 
-`sudo pip install aubio`
+```
 
-`python -c "import aubio; print(aubio.version)”`
+sudo easy_install pip
 
-Clone the Aubio project (Python demos are in python/demos)  
+sudo pip install aubio
+
+python -c "import aubio; print(aubio.version)”
+
+```
+
+####git clone the Aubio project (Python demos are in python/demos)  
+
+Use this comand to download the aubio project.  With Github you can contrute your changes to the project. However, you will have to take a "learning Git" basics course. However, if you just want to make your own copy for now use the "git clone command"
 
 `git clone https://github.com/aubio/aubio.git`
 
 #### Refference Sites
- 
+
 https://github.com/aubio/aubio
 
-http://whatis.techtarget.com/definition/Nyquist-Theorem
+http://whatis.techtarget.com/definition/Nyquist-Theorem)
 
 https://www.sweetwater.com/insync/7-things-about-sample-rate/
 
 https://manual.audacityteam.org/man/glossary.html
 
-
 #### Getting Started  
 
-Get source information from the audio file (dlw_source.py)
+Get source information from the audio file (dlw_source.py).  This Python program imports the aubio libraru and uses the source opject to read the samplerate and hop_size and calculates the total_frames in the AIFF or MP# file. 
 
 ```
 #! /usr/bin/env python
@@ -67,11 +76,13 @@ if __name__ == '__main__':
     outstr += "," + f.uri
     print(outstr)
 ```
-Loop through all the Audion files and get source information into a csv file
+This is a simple shell script to loop through all the Audion files and get source information into a csv file.
 
 ```
-cd audio
+cd audio_files
+
 echo "read,frames,blocks,samplerate,file" >../reports/source.csv ;
+
 for i in `ls | sort -n`
 do
   ../python/dlw_source.py $i >>../reports/source.csv
@@ -84,6 +95,7 @@ In RStudio import in the source.csv file
 source <- read.csv("~/Documents/SCALE-2018-Daniel/reports/source.csv")
 
 View(source)  
+
 ```
 
 In RStudio code to anaylze the source.csv data
@@ -160,7 +172,7 @@ Get Tempo information from an audio files to compare (day1,day54 and baseline)
 
 #### Analyzing Tempo and Beats
 
-Plotting tempo information from the audio file (dlm_tempo_plot.py)
+Plotting tempo information from the audio file (dlw_tempo_plot.py)
 
 ```
 #! /usr/bin/env python
@@ -245,7 +257,6 @@ else:
     print('plotting %s' % filename)
     
 ```
-
  
  Plot Tempo information from an audio files to compare  
 
