@@ -28,7 +28,7 @@ python -c "import aubio; print(aubio.version)”
 
 ####git clone the Aubio project (Python demos are in python/demos)  
 
-Use this comand to download the aubio project.  With Github you can contrute your changes to the project. However, you will have to take a "learning Git" basics course. However, if you just want to make your own copy for now use the "git clone command"
+Use this comand to download the aubio project.  With Github you can contrute your changes to the project. However, you will have to take a "learning Git" basics course. However, if you just want to make your own copy for now use the git clone command
 
 `git clone https://github.com/aubio/aubio.git`
 
